@@ -1,80 +1,46 @@
-import React, { useState } from 'react';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-const Landing = () => {
-  const slides = [
-    {
-      title: 'Manage Your Tasks Efficiently',
-      description: 'Easily create, track, and complete tasks to stay organized and productive.',
-      imageUrl: 'https://via.placeholder.com/800x400?text=Task+Management',
-    },
-    {
-      title: 'Prioritize What Matters',
-      description: 'Set task priorities to focus on what’s most important.',
-      imageUrl: 'https://via.placeholder.com/800x400?text=Task+Prioritization',
-    },
-    {
-      title: 'Track Your Progress',
-      description: 'Visualize your progress with detailed insights and reports.',
-      imageUrl: 'https://via.placeholder.com/800x400?text=Progress+Tracking',
-    },
-  ];
+import React from 'react';
 
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  };
-
+const Landing= () => {
   return (
-    <div className="relative w-full max-w-4xl mx-auto mt-10">
-      <div className="overflow-hidden rounded-lg shadow-lg">
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`w-full transition-transform duration-500 ease-in-out transform ${
-              index === currentSlide ? 'translate-x-0' : '-translate-x-full'
-            }`}
-          >
-            <img src={slide.imageUrl} alt={slide.title} className="w-full h-60 object-cover" />
-            <div className="p-6 bg-white">
-              <h2 className="text-2xl font-bold">{slide.title}</h2>
-              <p className="mt-2 text-gray-600">{slide.description}</p>
+    <div className="bg-gray-100 font-sans leading-normal tracking-normal">
+      <section className="flex items-center justify-center h-screen bg-blue-500">
+        <div className="text-center text-white px-6 md:px-12">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            Manage Your Tasks Efficiently
+          </h1>
+          <p className="text-lg md:text-xl mb-6">
+            Stay organized and boost your productivity with our intuitive to-do application. Simple, effective, and designed for your needs.
+          </p>
+          <a href="#features" className="bg-white text-blue-500 py-2 px-4 rounded-lg font-semibold shadow-md hover:bg-gray-100 transition duration-300">
+            Get Started
+          </a>
+        </div>
+      </section>
+      <section id="features" className="py-12">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold mb-8">Features</h2>
+          <div className="flex flex-wrap justify-center gap-6">
+            <div className="bg-white p-6 rounded-lg shadow-lg w-full md:w-1/3">
+              <h3 className="text-xl font-semibold mb-4">Task Management</h3>
+              <p className="text-gray-700">Organize your tasks into lists, set deadlines, and mark them as complete.</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-lg w-full md:w-1/3">
+              <h3 className="text-xl font-semibold mb-4">Reminders</h3>
+              <p className="text-gray-700">Receive reminders for your tasks to ensure you never miss a deadline.</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-lg w-full md:w-1/3">
+              <h3 className="text-xl font-semibold mb-4">Collaborate</h3>
+              <p className="text-gray-700">Share your task lists with others and collaborate on projects effectively.</p>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      </section>
 
-      {/* Navigation Arrows */}
-      <button
-        onClick={prevSlide}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 focus:outline-none"
-      >
-        <FaChevronLeft className="text-gray-700" />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 focus:outline-none"
-      >
-        <FaChevronRight className="text-gray-700" />
-      </button>
-
-      {/* Slide Indicators */}
-      <div className="flex justify-center mt-4">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 mx-1 rounded-full focus:outline-none ${
-              currentSlide === index ? 'bg-violet-500' : 'bg-gray-300'
-            }`}
-          ></button>
-        ))}
-      </div>
+      {/* Footer */}
+      <footer className="bg-gray-800 text-white py-4 text-center">
+        <p>&copy; 2024 To-Do Application. All rights reserved.</p>
+      </footer>
     </div>
   );
 };
